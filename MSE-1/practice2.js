@@ -201,6 +201,11 @@ Parameters: - message (string)
 Constraints: - Must use new Promise. - Must use setTimeout. 
 ======================================================= */ 
 function createPromise(message) { 
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(message);
+        },1000);
+    });
 // STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
 } 
@@ -212,6 +217,7 @@ Constraints: - Must use then().
 ======================================================= */ 
 function consumeWithThen(promise) { 
 // STUDENT CODE STARTS 
+promise.then((result) => result);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -221,6 +227,7 @@ Handle rejected promise using catch().
 Constraints: - Must use catch(). 
 ======================================================= */ 
 function promiseReject() { 
+    return Promise.reject("Error").catch((error) => error);
 // STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
 } 
