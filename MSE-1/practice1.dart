@@ -24,12 +24,13 @@ Person(this.name);
 String getRole() => "Person"; 
 } 
 class Student extends Person { 
-int id; 
-String course; 
-Student(String name, this.id, this.course) : super(name); 
+  int id; 
+  String course; 
+  Student(String name, this.id, this.course) : super(name); 
+
+  @override 
+  String getRole() => "Student"; 
 } 
-@override 
-String getRole() => "Student"; 
 mixin Logger { 
 void log(String message) { 
 print("LOG: $message"); 
@@ -95,8 +96,9 @@ factorial(5) → 120
 int factorial(int n) { 
 // STUDENT CODE STARTS HERE 
     int ans = 1;
-    while(n-- != 1){
-        ans = ans*n;
+    while (n > 1) {
+      ans *= n;
+      n--;
     }
     return ans;
 // STUDENT CODE ENDS HERE 
@@ -127,13 +129,12 @@ Parameters: - list (List<int>)
 Constraints: - Must use loop. - Return new reversed list. 
 =========================================================== */ 
 List<int> reverseList(List<int> list) { 
+// STUDENT CODE STARTS HERE 
     List<int> arr = [];
-    int n = list.length;
-    for(int i=n-1;i>=0;i--){
-        arr.add(list[i]);
+    for (int i = list.length - 1; i >= 0; i--) {
+      arr.add(list[i]);
     }
     return arr;
-// STUDENT CODE STARTS HERE 
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -144,12 +145,12 @@ Parameters: - list (List<int>)
 Constraints: - Must use loop. 
 =========================================================== */ 
 int sumList(List<int> list) { 
-    int sum = 0;
-    int n = list.length;
-    for(int i=0;i<n;i++){
-        sum += list[i];
-    }
 // STUDENT CODE STARTS HERE 
+    int sum = 0;
+    for (int i = 0; i < list.length; i++) {
+      sum += list[i];
+    }
+    return sum;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -185,7 +186,8 @@ Constraints: - Create Teacher object. - Call log() method.
 =========================================================== */ 
 void useLogger(String message) { 
 // STUDENT CODE STARTS HERE 
-    
+    Teacher teacher = new Teacher("Web-Tech");
+    teacher.log(message);
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -198,6 +200,8 @@ Constraints: - Declare local variable inside function. - Return its value.
 =========================================================== */ 
 int scopeExample() { 
 // STUDENT CODE STARTS HERE 
+    int x = 20;
+    return x;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -210,7 +214,19 @@ Test Case:
 grade(90) → "A" 
 =========================================================== */ 
 String grade(int marks) { 
-// STUDENT CODE STARTS HERE 
+// STUDENT CODE STARTS HERE
+    switch(marks){
+        case marks >= 90:
+            return "A";
+        case marks >= 80:
+            return "B";
+        case marks >= 70:
+            return "C";
+        case marks >= 60:
+            return "D";
+        default:
+            return "F";
+    }
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -222,6 +238,7 @@ Constraints: - Must use Future.delayed.
 =========================================================== */ 
 Future<String> fetchData(String message) { 
 // STUDENT CODE STARTS HERE 
+    return Future.delayed(Duration(seconds: 1), () => message);
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -234,6 +251,8 @@ Constraints:
 =========================================================== */ 
 Future<void> consumeFuture(Future<String> future) async { 
 // STUDENT CODE STARTS HERE 
+    String result = await future;
+    print(result);
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -244,6 +263,13 @@ Constraints: - Must use try/catch.
 =========================================================== */ 
 Future<void> errorHandling() async { 
 // STUDENT CODE STARTS HERE 
+    try {
+      await Future.delayed(Duration(milliseconds: 10), () {
+        throw Exception('Simulated error');
+      });
+    } catch (e) {
+      print('Caught error: $e');
+    }
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -257,6 +283,11 @@ Parameters: - list (List<int>)
 =========================================================== */ 
 int countEven(List<int> list) { 
 // STUDENT CODE STARTS HERE 
+    int count = 0;
+    for (var v in list) {
+      if (v % 2 == 0) count++;
+    }
+    return count;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -269,6 +300,8 @@ Constraints: - Create Student object. - Return role.
 =========================================================== */ 
 String studentRoleTest() { 
 // STUDENT CODE STARTS HERE 
+    Student s = Student('Aarav', 101, 'B.Tech');
+    return s.getRole();
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -279,6 +312,8 @@ Constraints: - Create Teacher object. - Call log().
 =========================================================== */ 
 void mixinTest() { 
 // STUDENT CODE STARTS HERE 
+    Teacher t = Teacher('Math');
+    t.log('Mixin test');
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -289,6 +324,7 @@ Parameters: - message (String)
 =========================================================== */ 
 Future<String> futureChain(String message) { 
 // STUDENT CODE STARTS HERE 
+    return Future.value(message).then((value) => 'Chained: $value');
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -298,6 +334,10 @@ async + loop combination.
 =========================================================== */ 
 Future<void> asyncLoop() async { 
 // STUDENT CODE STARTS HERE 
+    for (int i = 1; i <= 3; i++) {
+      await Future.delayed(Duration(milliseconds: 50));
+      print(i);
+    }
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -308,6 +348,13 @@ Parameters: - n (int)
 =========================================================== */ 
 int sumWhile(int n) { 
 // STUDENT CODE STARTS HERE 
+    int sum = 0;
+    int i = 1;
+    while (i <= n) {
+      sum += i;
+      i++;
+    }
+    return sum;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -318,6 +365,8 @@ Constraints: - Declare private variable inside class or function.
 =========================================================== */ 
 int encapsulationExample() { 
 // STUDENT CODE STARTS HERE 
+    int _secret = 42;
+    return _secret;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -327,8 +376,15 @@ Nested loop printing pattern.
 =========================================================== */ 
 void nestedLoop(int n) { 
 // STUDENT CODE STARTS HERE 
-} 
+    for (int i = 1; i <= n; i++) {
+      String line = '';
+      for (int j = 0; j < i; j++) {
+        line += '*';
+      }
+      print(line);
+    }
 // STUDENT CODE ENDS HERE 
+} 
 /* =========================================================== 
 24 
 Purpose: 
@@ -337,6 +393,7 @@ Parameters: - name (String)
 =========================================================== */ 
 Person createPerson(String name) { 
 // STUDENT CODE STARTS HERE 
+    return Person(name);
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -346,6 +403,7 @@ Future.delayed returning value.
 =========================================================== */ 
 Future<String> delayedMessage() { 
 // STUDENT CODE STARTS HERE 
+    return Future.delayed(Duration(seconds: 1), () => 'Delayed message');
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -355,6 +413,7 @@ async returning integer sum.
 =========================================================== */ 
 Future<int> asyncSum(int a, int b) async { 
 // STUDENT CODE STARTS HERE 
+    return a + b;
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -364,8 +423,13 @@ Filter list greater than 20 using loop.
 =========================================================== */ 
 List<int> filterGreaterThan20(List<int> list) { 
 // STUDENT CODE STARTS HERE 
-} 
+    List<int> result = [];
+    for (var v in list) {
+      if (v > 20) result.add(v);
+    }
+    return result;
 // STUDENT CODE ENDS HERE 
+} 
 /* =========================================================== 
 28 
 Purpose: 
@@ -374,6 +438,18 @@ Parameters: - a (int) - b (int) - operator (String)
 =========================================================== */ 
 dynamic calculator(int a, int b, String operator) { 
 // STUDENT CODE STARTS HERE 
+    switch (operator) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '*':
+        return a * b;
+      case '/':
+        return b != 0 ? a / b : 'Division by zero';
+      default:
+        return null;
+    }
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -383,6 +459,8 @@ Polymorphism test.
 =========================================================== */ 
 String polymorphismTest() { 
 // STUDENT CODE STARTS HERE 
+    Person p = Student('Aarav', 101, 'B.Tech');
+    return p.getRole();
 // STUDENT CODE ENDS HERE 
 } 
 /* =========================================================== 
@@ -392,5 +470,11 @@ Display Full integration (OOP + async + loop).
 =========================================================== */ 
 Future<void> integrationTest() async { 
 // STUDENT CODE STARTS HERE 
+    Student s = Student('Aarav', 101, 'B.Tech');
+    print('Role: ${s.getRole()}');
+    for (int i = 1; i <= 3; i++) {
+      await Future.delayed(Duration(milliseconds: 50));
+      print('Count: $i');
+    }
 // STUDENT CODE ENDS HERE 
 } 
