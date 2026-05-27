@@ -20,11 +20,10 @@ Test Case:
 sumLet(5,5) → 10 
 ======================================================= */ 
 function sumLet(a, b) { 
+// STUDENT CODE STARTS 
     let sum = a+b;
     return sum;
-// STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
-
 } 
 /* ======================================================= 
 2 
@@ -36,9 +35,9 @@ Test Case:
 multiplyConst(5,4) → 20 
 ======================================================= */ 
 function multiplyConst(a, b) { 
-    const sum = a*b;
-    return sum;
 // STUDENT CODE STARTS 
+    const mul = a*b;
+    return mul;
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -51,8 +50,8 @@ Test Case:
 square(4) → 16 
 ======================================================= */ 
 const square = (n) => { 
-    return n*n;
 // STUDENT CODE STARTS 
+    return n*n;
 // STUDENT CODE ENDS 
 }; 
 /* ======================================================= 
@@ -65,8 +64,8 @@ Test Case:
 greet("Aman") → "Hello Aman" 
 ======================================================= */ 
 function greet(name) { 
-    return `Hello ${name}`;
 // STUDENT CODE STARTS 
+    return (`Hello ${name}`);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -79,9 +78,9 @@ Test Case:
 getFirstTwo(numbers) → [10,20] 
 ======================================================= */ 
 function getFirstTwo(arr) { 
+// STUDENT CODE STARTS 
     const [first,second] = arr;
     return [first,second];
-// STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -92,9 +91,9 @@ Parameters: - obj (object)
 Constraints: - Must use destructuring. - Return object containing only name and age. 
 ======================================================= */ 
 function getUserInfo(obj) { 
+// STUDENT CODE STARTS 
     const {name,age} = obj;
     return {name,age};
-// STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -107,8 +106,8 @@ Test Case:
 addDefault(10) → 15 
 ======================================================= */ 
 function addDefault(a, b = 5) { 
-    return a+b;
 // STUDENT CODE STARTS 
+    return a+b;
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -121,8 +120,8 @@ Test Case:
 sumRest(1,2,3) → 6 
 ======================================================= */ 
 function sumRest(...nums) { 
-    return nums.reduce((acc,curr) => acc+curr,0);
 // STUDENT CODE STARTS 
+    return nums.reduce((acc,curr) => acc + curr,0);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -133,8 +132,8 @@ Parameters: - arr1 (array) - arr2 (array)
 Constraints: - Must use spread operator. 
 ======================================================= */ 
 function mergeArrays(arr1, arr2) { 
-    return [...arr1,...arr2];
 // STUDENT CODE STARTS 
+    return [...arr1,...arr2];
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -145,8 +144,8 @@ Parameters: - obj (object)
 Constraints: - Must use spread. - Do not modify original object. 
 ======================================================= */ 
 function cloneObject(obj) { 
-    return {...obj};
 // STUDENT CODE STARTS 
+    return {...obj};
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -157,8 +156,8 @@ Parameters: - arr (array)
 Constraints: - Must use map(). 
 ======================================================= */ 
 function doubleNumbers(arr) { 
-    return arr.map((x) => x*2);
 // STUDENT CODE STARTS 
+    return arr.map((x) => x*2);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -168,8 +167,8 @@ Filter numbers greater than 20.
 Constraints: - Must use filter(). 
 ======================================================= */ 
 function filterGreaterThan20(arr) { 
-    return arr.filter((x) => x > 20);
 // STUDENT CODE STARTS 
+    return arr.filter((x) => x > 20);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -179,8 +178,8 @@ Find maximum using spread.
 Constraints: - Must use Math.max and spread. 
 ======================================================= */ 
 function findMax(arr) { 
-    return Math.max(...arr);
 // STUDENT CODE STARTS 
+    return Math.max(...arr);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -189,10 +188,10 @@ Purpose:
 Remove age property using destructuring. 
 Constraints: - Must use destructuring with rest. 
 ======================================================= */ 
-function removeAge(obj) {
-     const {age,...rest} = obj;
-     return rest;
+function removeAge(obj) { 
 // STUDENT CODE STARTS 
+    return {age,...rest} = obj;
+    return rest;
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -203,12 +202,12 @@ Parameters: - message (string)
 Constraints: - Must use new Promise. - Must use setTimeout. 
 ======================================================= */ 
 function createPromise(message) { 
+// STUDENT CODE STARTS 
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(message)
+            resolve(message);
         },1000);
-    });
-// STUDENT CODE STARTS 
+    })
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -219,7 +218,6 @@ Constraints: - Must use then().
 ======================================================= */ 
 function consumeWithThen(promise) { 
 // STUDENT CODE STARTS 
-    promise.then((result) => result);
 // STUDENT CODE ENDS 
 } 
 /* ======================================================= 
@@ -229,7 +227,6 @@ Handle rejected promise using catch().
 Constraints: - Must use catch(). 
 ======================================================= */ 
 function promiseReject() { 
-    return Promise.reject("Error").catch((error) => error);
 // STUDENT CODE STARTS 
 // STUDENT CODE ENDS 
 } 
@@ -403,4 +400,4 @@ var a = 1;
 let b = 2; 
 return typeof a + "-" + typeof b; 
 // STUDENT CODE ENDS 
-} 
+}

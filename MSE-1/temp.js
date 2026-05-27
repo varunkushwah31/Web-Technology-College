@@ -248,8 +248,8 @@ function createSuccessPromise(message) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(message),2000
-    });
-  });
+    })
+  })
 
   // STUDENT CODE ENDS HERE
 }
@@ -278,12 +278,11 @@ function createConditionalPromise(condition) {
 
   return new Promise((resolve,reject) => {
     if(condition){
-      resolve("Success");
+      resolve("Success")
     }else{
-      reject("Failed");
+      reject("Failed")
     }
-  });
-
+  })
   // STUDENT CODE ENDS HERE
 }
 
@@ -340,7 +339,7 @@ function driver() {
   console.log("Default Add:", addDefault());
 
   const successPromise = createSuccessPromise("Operation Successful");
-  const conditionPromise = createConditionalPromise(false);
+  const conditionPromise = createConditionalPromise(true);
 
   handlePromise(successPromise);
   handlePromise(conditionPromise);
